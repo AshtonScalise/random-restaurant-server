@@ -7,12 +7,9 @@ const { token } = require('./api')
 const app = express()
 const port = 5000
 
-const myToken = token
-
 async function getYelp(zip){
     
-    var chosenZipcode = zip
-    var location = await zipcodes.lookup(chosenZipcode);
+    var location = await zipcodes.lookup(zip);
     var latitude = location.latitude
     var longitude = location.longitude
     var radius = 5000 
@@ -22,7 +19,7 @@ async function getYelp(zip){
     const response = await axios({
         method: "get",
         url: myUrl,
-        headers:{ Authorization: `Bearer ${myToken}`}
+        headers:{ Authorization: `Bearer ${token}`}
     })
 
     let restaurants = []
