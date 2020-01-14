@@ -1,7 +1,7 @@
 const stdin = process.openStdin()
 const express = require("express")
-var axios = require("axios")
-var zipcodes = require("zipcodes")
+const axios = require("axios")
+const zipcodes = require("zipcodes")
 const { token } = require('./api')
 
 const app = express()
