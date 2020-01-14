@@ -1,0 +1,25 @@
+{
+  "name": "random-restaurant-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "express": "^4.17.1",
+    "zipcodes": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshtonScalise/random-restaurant-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshtonScalise/random-restaurant-server/issues"
+  },
+  "homepage": "https://github.com/AshtonScalise/random-restaurant-server#readme"
+}
