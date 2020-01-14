@@ -7,3 +7,6 @@
 ### Dependencies 
 
 #### axios, express, and zipcodes
+
+
+#### just use npm i to pull all of them
