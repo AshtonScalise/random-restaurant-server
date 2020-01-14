@@ -13,7 +13,7 @@ async function getYelp(zip){
     var latitude = location.latitude
     var longitude = location.longitude
     var radius = 5000 
-    var myUrl = `https://api.yelp.com/v3/businesses/search?term=food&latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=50`
+    var myUrl = `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=50`
 
 
     const response = await axios({
@@ -30,7 +30,8 @@ async function getYelp(zip){
         }
     let randomInt = getRandomInt(response.data.total-1)
 
-    console.log(restaurants[randomInt])
+    //console.log(restaurants[randomInt])
+    console.log(restaurants)
 
 }
 
