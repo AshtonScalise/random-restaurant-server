@@ -15,7 +15,6 @@ async function getYelp(zip){
     var radius = 5000 
     var myUrl = `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=50`
 
-
     const response = await axios({
         method: "get",
         url: myUrl,
@@ -23,16 +22,22 @@ async function getYelp(zip){
     })
 
     let restaurants = []
-
+    try{
         for(let i = 0; i < response.data.total; i++){
             restaurants.push(response.data.businesses[i].name)    
 
         }
+    }
+    catch{}
     let randomInt = getRandomInt(response.data.total-1)
 
-    //console.log(restaurants[randomInt])
-    console.log(restaurants)
-
+    try{
+        //console.log(restaurants[randomInt])
+        console.log(restaurants)
+    }
+    catch{
+        console.log("no places near you")
+    }
 }
 
 function getRandomInt(max) {
