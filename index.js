@@ -9,6 +9,8 @@ const { token } = require("./api");
 const app = express();
 const port = 5000;
 
+var result = "";
+
 async function getYelp(zip) {
   var location = await zipcodes.lookup(zip);
   var latitude = location.latitude;
@@ -32,7 +34,7 @@ async function getYelp(zip) {
   let randomInt = getRandomInt(response.data.total - 1);
 
   try {
-    console.log(restaurants[randomInt]);
+    result = restaurants[randomInt];
   } catch (e) {}
 }
 
@@ -45,9 +47,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/restaurant", (req, res) => {
+app.post("/send", (req, res) => {
   console.log(req.body.zip);
   res.send(getYelp(req.body.zip));
+});
+
+app.get("/outcome", (req, res) => {
+  res.send(result);
+  result = "";
 });
 
 app.listen(port, () => console.log(`listening on port${port}...`));
