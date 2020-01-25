@@ -9,7 +9,7 @@ const { token } = require("./api");
 const app = express();
 const port = 5000;
 
-var result = "";
+var result;
 
 async function getYelp(zip) {
   var location = await zipcodes.lookup(zip);
@@ -23,7 +23,6 @@ async function getYelp(zip) {
     url: myUrl,
     headers: { Authorization: `Bearer ${token}` }
   });
-
   let restaurants = [];
 
   try {
@@ -47,14 +46,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/send", (req, res) => {
-  console.log(req.body.zip);
-  res.send(getYelp(req.body.zip));
-});
-
-app.get("/outcome", (req, res) => {
+app.post("/send", async (req, res) => {
+  await getYelp(req.body.zip);
   res.send(result);
-  result = "";
 });
 
 app.listen(port, () => console.log(`listening on port${port}...`));
