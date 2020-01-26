@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const { token } = require("./api");
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 var result;
 
@@ -16,7 +16,7 @@ async function getYelp(zip) {
   var latitude = location.latitude;
   var longitude = location.longitude;
   var radius = 5000;
-  var myUrl = `https://api.yelp.com/v3/businesses/search?term=food&latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=50`;
+  var myUrl = `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=${latitude}&longitude=${longitude}&radius=${radius}&limit=50`;
 
   const response = await axios({
     method: "get",
